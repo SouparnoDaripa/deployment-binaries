@@ -139,7 +139,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<app-navbar></app-navbar>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2 sidebar-side\">\r\n            <app-sidebar [userInfo]=\"user\" [userList]=\"userList\" [friendList]=\"friendList\" [pendingFriendList]=\"pendingFriendList\"></app-sidebar>\r\n        </div>\r\n        <div class=\"col-md-10\">\r\n            <div class=\"container todos\">\r\n                <div class=\"page-header\">\r\n                    <h2>TO DOs</h2>\r\n                </div>\r\n                <div class=\"page-content\">\r\n                  <span><h5 *ngIf=\"todoList.length == 0\">Oops! It seems you have no ToDo list. Please start your ToDo list now.</h5> <button class=\"btn btn-purple\" (click)=\"handleTodoEvent()\">Add New Todo</button></span>\r\n                  <div class=\"row\">\r\n                  <div class=col-md-3 *ngFor=\"let todo of todoList\">\r\n                    <div class=\"card todo-box\">\r\n                      <div class=\"card-header\">\r\n                        {{todo.title}}\r\n                      </div>\r\n                      <ul class=\"list-group list-group-flush\" *ngFor=\"let t of todo.list\">\r\n                        <li class=\"list-group-item\">\r\n                          <input type=\"checkbox\" ng-checked=\"t.isSelected == true\" disabled/>\r\n                          <span>{{t.description}}</span>\r\n                        </li>\r\n                        <li class=\"list-group-item\" *ngFor=\"let c of t.children\">\r\n                          <ul class=\"list-group list-group-flush\">\r\n                            <li class=\"list-group-item\">\r\n                              <input type=\"checkbox\" ng-checked=\"c.isSelected == true\" disabled/>\r\n                              <span>{{c.description}}</span>\r\n                            </li>\r\n                          </ul>\r\n                        </li>\r\n                      </ul>\r\n                      <div class=\"card-footer text-right\">\r\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit Todo\" (click)=\"handleTodoEvent(todo)\"></i>\r\n                        <i class=\"fa fa-trash\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete Todo\" (click)=removeTodo(todo)></i>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <ng-template #modalCreate let-close=\"close\">\r\n      <div class=\"container-box\" tabindex=\"0\" (keydown)= onKeyPress($event)>\r\n        <div class=\"modal-header\" (keydown)= onKeyPress($event)>\r\n            <h5 class=\"modal-title\"><input type=\"text\" [(ngModel)]=\"todo.title\" (blur)=\"updateItem(todo)\" placeholder=\"New Title\" /></h5>\r\n            <button type=\"button\" class=\"close\" (click)=\"close()\">\r\n              <span aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <div class=\"view-modal\">\r\n            <div class=\"row\">\r\n              <div class=\"col-12\">\r\n                <!-- <form #listForm=\"ngForm\"> -->\r\n                  <table class=\"table table-sm table-borderless\" (keydown)= onKeyPress($event)>\r\n                    <tbody *ngFor=\"let t of todo.list\">\r\n                      <tr>\r\n                        <td><input type=\"checkbox\" ng-checked=\"t.isSelected == true\" [(ngModel)]=\"t.isSelected\" (ngModelChange)=\"updateItem(todo)\"/></td>\r\n                        <td colspan=\"2\"><input type=\"text\" [(ngModel)]=\"t.description\" (blur)=\"updateItem(todo)\" /> </td>\r\n                        <td><i class=\"fa fa-close\" aria-hidden=\"true\" (click)=\"deleteItem(t)\"></i></td>\r\n                      </tr>\r\n                      <tr class=\"child\" *ngFor=\"let c of t.children\">\r\n                        <td></td>\r\n                        <td><input type=\"checkbox\" ng-checked=\"c.isSelected == true\" [(ngModel)]=\"c.isSelected\" (ngModelChange)=\"updateItem(todo)\"/></td>\r\n                        <td><input type=\"text\" [(ngModel)]=\"c.description\" (blur)=\"updateItem(todo)\"/> </td> \r\n                        <td><i class=\"fa fa-close\" aria-hidden=\"true\" (click)=\"deleteItem(t,c)\"></i></td>     \r\n                      </tr>\r\n                      <tr class=\"child\" [hidden]=\"isChildShow\" (click)=\"showChildAddedList()\">\r\n                        <td></td>\r\n                        <td><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></td>\r\n                        <td colspan=\"2\">Add New</td>\r\n                      </tr>\r\n                      <tr class=\"child\" [hidden]=\"!isChildShow\">\r\n                        <td></td>\r\n                        <td><input type=\"checkbox\" [(ngModel)]=\"childItem.isSelected\" name=\"isSelected\"/></td>\r\n                        <td colspan=\"2\"><input type=\"text\" [(ngModel)]=\"childItem.description\" name=\"description\" (blur)=\"addItem(t)\" (keyup.enter)=\"addItem(t)\"/> </td>\r\n                      </tr>\r\n                    </tbody>\r\n                    <tbody>\r\n                      <tr [hidden]=\"isShow\" (click)=\"showAddedList()\">\r\n                        <td><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></td>\r\n                        <td colspan=\"3\">Add New</td>\r\n                      </tr>\r\n                      <tr [hidden]=\"!isShow\">\r\n                        <td><input type=\"checkbox\" [(ngModel)]=\"item.isSelected\" name=\"item.isSelected\"/></td>\r\n                        <td colspan=\"3\"><input type=\"text\" [(ngModel)]=\"item.description\" name=\"item.description\" (blur)=\"addItem()\" (keyup.enter)=\"addItem(t)\"/> </td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                <!-- </form> -->\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      </ng-template>\r\n</div>";
+    __webpack_exports__["default"] = "<app-navbar></app-navbar>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2 col-sm-3 sidebar-side\">\r\n            <app-sidebar [userInfo]=\"user\" [userList]=\"userList\" [friendList]=\"friendList\" [pendingFriendList]=\"pendingFriendList\"></app-sidebar>\r\n        </div>\r\n        <div class=\"col-md-10 col-sm-9\">\r\n            <div class=\"container todos\">\r\n                <div class=\"page-header\">\r\n                    <h2>TO DOs</h2>\r\n                </div>\r\n                <div class=\"page-content\">\r\n                  <div *ngIf=\"todoList.length == 0\" class=\"top-decorum\"><h5>Oops! It seems you have no ToDo list. Please start your ToDo list now.</h5> <button class=\"btn btn-purple\" (click)=\"handleTodoEvent()\">Add New Todo</button></div>\r\n                  <div *ngIf=\"todoList.length != 0\" class=\"text-right top-decorum\"><button class=\"btn btn-purple\" (click)=\"handleTodoEvent()\">Add New Todo</button></div>\r\n                  <div class=\"row\">\r\n                  <div class=\"col-md-3 col-sm-6\" *ngFor=\"let todo of todoList\">\r\n                    <div class=\"card todo-box\">\r\n                      <div class=\"card-header\">\r\n                        {{todo.title}}\r\n                      </div>\r\n                      <ul class=\"list-group list-group-flush\" *ngFor=\"let t of todo.list\">\r\n                        <li class=\"list-group-item\">\r\n                          <input type=\"checkbox\" ng-checked=\"t.isSelected == true\" disabled/>\r\n                          <span>{{t.description}}</span>\r\n                        </li>\r\n                        <li class=\"list-group-item\" *ngFor=\"let c of t.children\">\r\n                          <ul class=\"list-group list-group-flush\">\r\n                            <li class=\"list-group-item\">\r\n                              <input type=\"checkbox\" ng-checked=\"c.isSelected == true\" disabled/>\r\n                              <span>{{c.description}}</span>\r\n                            </li>\r\n                          </ul>\r\n                        </li>\r\n                      </ul>\r\n                      <div class=\"card-footer text-right\">\r\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit Todo\" (click)=\"handleTodoEvent(todo)\"></i>\r\n                        <i class=\"fa fa-trash\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete Todo\" (click)=removeTodo(todo)></i>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <ng-template #modalCreate let-close=\"close\">\r\n      <div class=\"container-box\" tabindex=\"0\" (keydown)= onKeyPress($event)>\r\n        <div class=\"modal-header\" (keydown)= onKeyPress($event)>\r\n            <h5 class=\"modal-title\"><input type=\"text\" [(ngModel)]=\"todo.title\" (blur)=\"updateItem(todo)\" placeholder=\"New Title\" /></h5>\r\n            <button type=\"button\" class=\"close\" (click)=\"close()\">\r\n              <span aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <div class=\"view-modal\">\r\n            <div class=\"row\">\r\n              <div class=\"col-12\">\r\n                <!-- <form #listForm=\"ngForm\"> -->\r\n                  <table class=\"table table-sm table-borderless\" (keydown)= onKeyPress($event)>\r\n                    <tbody *ngFor=\"let t of todo.list\">\r\n                      <tr>\r\n                        <td><input type=\"checkbox\" ng-checked=\"t.isSelected == true\" [(ngModel)]=\"t.isSelected\" (ngModelChange)=\"updateItem(todo)\"/></td>\r\n                        <td colspan=\"2\"><input type=\"text\" [(ngModel)]=\"t.description\" (blur)=\"updateItem(todo)\" /> </td>\r\n                        <td><i class=\"fa fa-close\" aria-hidden=\"true\" (click)=\"deleteItem(t)\"></i></td>\r\n                      </tr>\r\n                      <tr class=\"child\" *ngFor=\"let c of t.children\">\r\n                        <td></td>\r\n                        <td><input type=\"checkbox\" ng-checked=\"c.isSelected == true\" [(ngModel)]=\"c.isSelected\" (ngModelChange)=\"updateItem(todo)\"/></td>\r\n                        <td><input type=\"text\" [(ngModel)]=\"c.description\" (blur)=\"updateItem(todo)\"/> </td> \r\n                        <td><i class=\"fa fa-close\" aria-hidden=\"true\" (click)=\"deleteItem(t,c)\"></i></td>     \r\n                      </tr>\r\n                      <tr class=\"child\" [hidden]=\"isChildShow\" (click)=\"showChildAddedList()\">\r\n                        <td></td>\r\n                        <td><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></td>\r\n                        <td colspan=\"2\">Add New</td>\r\n                      </tr>\r\n                      <tr class=\"child\" [hidden]=\"!isChildShow\">\r\n                        <td></td>\r\n                        <td><input type=\"checkbox\" [(ngModel)]=\"childItem.isSelected\" name=\"isSelected\"/></td>\r\n                        <td colspan=\"2\"><input type=\"text\" [(ngModel)]=\"childItem.description\" name=\"description\" (blur)=\"addItem(t)\" (keyup.enter)=\"addItem(t)\"/> </td>\r\n                      </tr>\r\n                    </tbody>\r\n                    <tbody>\r\n                      <tr [hidden]=\"isShow\" (click)=\"showAddedList()\">\r\n                        <td><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></td>\r\n                        <td colspan=\"3\">Add New</td>\r\n                      </tr>\r\n                      <tr [hidden]=\"!isShow\">\r\n                        <td><input type=\"checkbox\" [(ngModel)]=\"item.isSelected\" name=\"item.isSelected\"/></td>\r\n                        <td colspan=\"3\"><input type=\"text\" [(ngModel)]=\"item.description\" name=\"item.description\" (blur)=\"addItem()\" (keyup.enter)=\"addItem(t)\"/> </td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                <!-- </form> -->\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      </ng-template>\r\n</div>";
     /***/
   },
 
@@ -1774,7 +1774,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".sidebar{ \r\n    width:220px;  background-color:#000;\r\n    -webkit-transition: all 0.5s  ease-in-out;\r\n    transition: all 0.5s  ease-in-out; \r\n    min-height: 580px;\r\n}\r\n.bg-sidebar{\r\n    background-color:#222;\r\n}\r\n.sidebar ul{ \r\n    list-style:none; margin:0px; padding:0px; \r\n}\r\n.sidebar li a,.sidebar li a.collapsed.active{ \r\n    display:block; padding:8px 12px; \r\n    color:#fff;border-left:0px solid #dedede;  \r\n    text-decoration:none\r\n}\r\n.sidebar li a.active{\r\n    background-color:#000;\r\n    border-left:5px solid #dedede; \r\n    -webkit-transition: all 0.5s  ease-in-out; \r\n    transition: all 0.5s  ease-in-out\r\n}\r\n.sidebar li a:hover{\r\n    background-color:#000 !important;\r\n}\r\n.sidebar li a i{ \r\n    padding-right:5px;\r\n}\r\n.sidebar ul li .sub-menu li a{ \r\n    position:relative\r\n}\r\n.sidebar ul li .sub-menu li a:hover:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: -5px;\r\n    top: 0;\r\n    width: 5px;\r\n    background-color: #111;\r\n    height: 100%;\r\n}\r\n.sidebar ul li .sub-menu li a:hover{ \r\n    background-color:#222; \r\n    padding-left:20px; \r\n    -webkit-transition: all 0.5s  ease-in-out; \r\n    transition: all 0.5s  ease-in-out\r\n}\r\n.sub-menu{ \r\n    border-left:5px solid #dedede;\r\n}\r\n.sidebar li a .nav-label,.sidebar li a .nav-label+span{ \r\n    -webkit-transition: all 0.5s  ease-in-out; \r\n    transition: all 0.5s  ease-in-out\r\n}\r\n.sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ \r\n    display:none;-webkit-transition: all 0.5s  ease-in-out;transition: all 0.5s  ease-in-out\r\n}\r\n.sidebar.fliph {\r\n    width: 42px;-webkit-transition: all 0.5s  ease-in-out;transition: all 0.5s  ease-in-out;\r\n   \r\n}\r\n.sidebar.fliph li{ \r\n    position:relative\r\n}\r\n.sidebar.fliph .sub-menu {\r\n    position: absolute;\r\n    left: 39px;\r\n    top: 0;\r\n    background-color: #222;\r\n    width: 150px;\r\n    z-index: 100;\r\n}\r\n.user-panel {\r\n    clear: left;\r\n    display: block;\r\n    float: left;\r\n}\r\n.user-panel>.image>img {\r\n    width: 100%;\r\n    max-width: 45px;\r\n    height: auto;\r\n}\r\n.user-panel>.info,  .user-panel>.info>a {\r\n    color: #fff;\r\n}\r\n.user-panel>.info>p {\r\n    font-weight: 600;\r\n    margin-bottom: 9px;\r\n}\r\n.user-panel {\r\n    clear: left;\r\n    display: block;\r\n    float: left;\r\n    width: 100%;\r\n    margin-bottom: 15px;\r\n    padding: 25px 15px;\r\n    border-bottom: 1px solid;\r\n}\r\n.user-panel>.info {\r\n    padding: 5px 5px 5px 15px;\r\n    line-height: 1;\r\n    position: absolute;\r\n    left: 55px;\r\n}\r\n.fliph .user-panel{ \r\n    display: none; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2lkZWJhci9zaWRlYmFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXLEdBQUcscUJBQXFCO0lBQ25DLHlDQUFpQztJQUFqQyxpQ0FBaUM7SUFDakMsaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSSxxQkFBcUI7QUFDekI7QUFDQTtJQUNJLGVBQWUsRUFBRSxVQUFVLEVBQUUsV0FBVztBQUM1QztBQUNBO0lBQ0ksYUFBYSxFQUFFLGdCQUFnQjtJQUMvQixVQUFVLENBQUMsNkJBQTZCO0lBQ3hDO0FBQ0o7QUFDQTtJQUNJLHFCQUFxQjtJQUNyQiw2QkFBNkI7SUFDN0IseUNBQWdDO0lBQWhDO0FBQ0o7QUFDQTtJQUNJLGdDQUFnQztBQUNwQztBQUNBO0lBQ0ksaUJBQWlCO0FBQ3JCO0FBQ0E7SUFDSTtBQUNKO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixNQUFNO0lBQ04sVUFBVTtJQUNWLHNCQUFzQjtJQUN0QixZQUFZO0FBQ2hCO0FBQ0E7SUFDSSxxQkFBcUI7SUFDckIsaUJBQWlCO0lBQ2pCLHlDQUFnQztJQUFoQztBQUNKO0FBQ0E7SUFDSSw2QkFBNkI7QUFDakM7QUFDQTtJQUNJLHlDQUFnQztJQUFoQztBQUNKO0FBQ0E7SUFDSSxZQUFZLENBQUMseUNBQWdDLENBQWhDO0FBQ2pCO0FBQ0E7SUFDSSxXQUFXLENBQUMseUNBQWlDLENBQWpDLGlDQUFpQzs7QUFFakQ7QUFDQTtJQUNJO0FBQ0o7QUFDQTtJQUNJLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsTUFBTTtJQUNOLHNCQUFzQjtJQUN0QixZQUFZO0lBQ1osWUFBWTtBQUNoQjtBQUVBO0lBQ0ksV0FBVztJQUNYLGNBQWM7SUFDZCxXQUFXO0FBQ2Y7QUFDQTtJQUNJLFdBQVc7SUFDWCxlQUFlO0lBQ2YsWUFBWTtBQUNoQjtBQUNBO0lBQ0ksV0FBVztBQUNmO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsa0JBQWtCO0FBQ3RCO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsY0FBYztJQUNkLFdBQVc7SUFDWCxXQUFXO0lBQ1gsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQix3QkFBd0I7QUFDNUI7QUFDQTtJQUNJLHlCQUF5QjtJQUN6QixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLFVBQVU7QUFDZDtBQUVBO0lBQ0ksYUFBYTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL3NpZGViYXIvc2lkZWJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNpZGViYXJ7IFxyXG4gICAgd2lkdGg6MjIwcHg7ICBiYWNrZ3JvdW5kLWNvbG9yOiMwMDA7XHJcbiAgICB0cmFuc2l0aW9uOiBhbGwgMC41cyAgZWFzZS1pbi1vdXQ7IFxyXG4gICAgbWluLWhlaWdodDogNTgwcHg7XHJcbn1cclxuLmJnLXNpZGViYXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiMyMjI7XHJcbn1cclxuLnNpZGViYXIgdWx7IFxyXG4gICAgbGlzdC1zdHlsZTpub25lOyBtYXJnaW46MHB4OyBwYWRkaW5nOjBweDsgXHJcbn1cclxuLnNpZGViYXIgbGkgYSwuc2lkZWJhciBsaSBhLmNvbGxhcHNlZC5hY3RpdmV7IFxyXG4gICAgZGlzcGxheTpibG9jazsgcGFkZGluZzo4cHggMTJweDsgXHJcbiAgICBjb2xvcjojZmZmO2JvcmRlci1sZWZ0OjBweCBzb2xpZCAjZGVkZWRlOyAgXHJcbiAgICB0ZXh0LWRlY29yYXRpb246bm9uZVxyXG59XHJcbi5zaWRlYmFyIGxpIGEuYWN0aXZle1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjojMDAwO1xyXG4gICAgYm9yZGVyLWxlZnQ6NXB4IHNvbGlkICNkZWRlZGU7IFxyXG4gICAgdHJhbnNpdGlvbjogYWxsIDAuNXMgIGVhc2UtaW4tb3V0XHJcbn1cclxuLnNpZGViYXIgbGkgYTpob3ZlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IzAwMCAhaW1wb3J0YW50O1xyXG59XHJcbi5zaWRlYmFyIGxpIGEgaXsgXHJcbiAgICBwYWRkaW5nLXJpZ2h0OjVweDtcclxufVxyXG4uc2lkZWJhciB1bCBsaSAuc3ViLW1lbnUgbGkgYXsgXHJcbiAgICBwb3NpdGlvbjpyZWxhdGl2ZVxyXG59XHJcbi5zaWRlYmFyIHVsIGxpIC5zdWItbWVudSBsaSBhOmhvdmVyOmFmdGVyIHtcclxuICAgIGNvbnRlbnQ6IFwiXCI7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiAtNXB4O1xyXG4gICAgdG9wOiAwO1xyXG4gICAgd2lkdGg6IDVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxMTE7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuLnNpZGViYXIgdWwgbGkgLnN1Yi1tZW51IGxpIGE6aG92ZXJ7IFxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjojMjIyOyBcclxuICAgIHBhZGRpbmctbGVmdDoyMHB4OyBcclxuICAgIHRyYW5zaXRpb246IGFsbCAwLjVzICBlYXNlLWluLW91dFxyXG59XHJcbi5zdWItbWVudXsgXHJcbiAgICBib3JkZXItbGVmdDo1cHggc29saWQgI2RlZGVkZTtcclxufVxyXG4uc2lkZWJhciBsaSBhIC5uYXYtbGFiZWwsLnNpZGViYXIgbGkgYSAubmF2LWxhYmVsK3NwYW57IFxyXG4gICAgdHJhbnNpdGlvbjogYWxsIDAuNXMgIGVhc2UtaW4tb3V0XHJcbn1cclxuLnNpZGViYXIuZmxpcGggbGkgYSAubmF2LWxhYmVsLC5zaWRlYmFyLmZsaXBoIGxpIGEgLm5hdi1sYWJlbCtzcGFueyBcclxuICAgIGRpc3BsYXk6bm9uZTt0cmFuc2l0aW9uOiBhbGwgMC41cyAgZWFzZS1pbi1vdXRcclxufVxyXG4uc2lkZWJhci5mbGlwaCB7XHJcbiAgICB3aWR0aDogNDJweDt0cmFuc2l0aW9uOiBhbGwgMC41cyAgZWFzZS1pbi1vdXQ7XHJcbiAgIFxyXG59XHJcbi5zaWRlYmFyLmZsaXBoIGxpeyBcclxuICAgIHBvc2l0aW9uOnJlbGF0aXZlXHJcbn1cclxuLnNpZGViYXIuZmxpcGggLnN1Yi1tZW51IHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGxlZnQ6IDM5cHg7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjIyO1xyXG4gICAgd2lkdGg6IDE1MHB4O1xyXG4gICAgei1pbmRleDogMTAwO1xyXG59XHJcblxyXG4udXNlci1wYW5lbCB7XHJcbiAgICBjbGVhcjogbGVmdDtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbn1cclxuLnVzZXItcGFuZWw+LmltYWdlPmltZyB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIG1heC13aWR0aDogNDVweDtcclxuICAgIGhlaWdodDogYXV0bztcclxufVxyXG4udXNlci1wYW5lbD4uaW5mbywgIC51c2VyLXBhbmVsPi5pbmZvPmEge1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbn1cclxuLnVzZXItcGFuZWw+LmluZm8+cCB7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogOXB4O1xyXG59XHJcbi51c2VyLXBhbmVsIHtcclxuICAgIGNsZWFyOiBsZWZ0O1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTVweDtcclxuICAgIHBhZGRpbmc6IDI1cHggMTVweDtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZDtcclxufVxyXG4udXNlci1wYW5lbD4uaW5mbyB7XHJcbiAgICBwYWRkaW5nOiA1cHggNXB4IDVweCAxNXB4O1xyXG4gICAgbGluZS1oZWlnaHQ6IDE7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiA1NXB4O1xyXG59XHJcblxyXG4uZmxpcGggLnVzZXItcGFuZWx7IFxyXG4gICAgZGlzcGxheTogbm9uZTsgXHJcbn0iXX0= */";
+    __webpack_exports__["default"] = ".sidebar{ \r\n    background-color:#000;\r\n    -webkit-transition: all 0.5s  ease-in-out;\r\n    transition: all 0.5s  ease-in-out;\r\n    min-height: 580px !important; \r\n}\r\n\r\n@media screen and (max-width: 992px) {\r\n    .sidebar {\r\n        min-height: 580px !important;\r\n    }\r\n}\r\n\r\n@media (max-width: 586) {\r\n    .sidebar {\r\n        min-height: 300px !important;\r\n    }\r\n}\r\n\r\n.bg-sidebar{\r\n    background-color:#222;\r\n}\r\n\r\n.sidebar ul{ \r\n    list-style:none; margin:0px; padding:0px; \r\n}\r\n\r\n.sidebar li a,.sidebar li a.collapsed.active{ \r\n    display:block; padding:8px 12px; \r\n    color:#fff;border-left:0px solid #dedede;  \r\n    text-decoration:none\r\n}\r\n\r\n.sidebar li a.active{\r\n    background-color:#000;\r\n    border-left:5px solid #dedede; \r\n    -webkit-transition: all 0.5s  ease-in-out; \r\n    transition: all 0.5s  ease-in-out\r\n}\r\n\r\n.sidebar li a:hover{\r\n    background-color:#000 !important;\r\n}\r\n\r\n.sidebar li a i{ \r\n    padding-right:5px;\r\n}\r\n\r\n.sidebar ul li .sub-menu li a{ \r\n    position:relative\r\n}\r\n\r\n.sidebar ul li .sub-menu li a:hover:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: -5px;\r\n    top: 0;\r\n    width: 5px;\r\n    background-color: #111;\r\n    height: 100%;\r\n}\r\n\r\n.sidebar ul li .sub-menu li a:hover{ \r\n    background-color:#222; \r\n    padding-left:20px; \r\n    -webkit-transition: all 0.5s  ease-in-out; \r\n    transition: all 0.5s  ease-in-out\r\n}\r\n\r\n.sub-menu{ \r\n    border-left:5px solid #dedede;\r\n}\r\n\r\n.sidebar li a .nav-label,.sidebar li a .nav-label+span{ \r\n    -webkit-transition: all 0.5s  ease-in-out; \r\n    transition: all 0.5s  ease-in-out\r\n}\r\n\r\n.sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ \r\n    display:none;-webkit-transition: all 0.5s  ease-in-out;transition: all 0.5s  ease-in-out\r\n}\r\n\r\n.sidebar.fliph {\r\n    width: 42px;-webkit-transition: all 0.5s  ease-in-out;transition: all 0.5s  ease-in-out;\r\n   \r\n}\r\n\r\n.sidebar.fliph li{ \r\n    position:relative\r\n}\r\n\r\n.sidebar.fliph .sub-menu {\r\n    position: absolute;\r\n    left: 39px;\r\n    top: 0;\r\n    background-color: #222;\r\n    width: 150px;\r\n    z-index: 100;\r\n}\r\n\r\n.user-panel {\r\n    clear: left;\r\n    display: block;\r\n    float: left;\r\n}\r\n\r\n.user-panel>.image>img {\r\n    width: 100%;\r\n    max-width: 45px;\r\n    height: auto;\r\n}\r\n\r\n.user-panel>.info,  .user-panel>.info>a {\r\n    color: #fff;\r\n}\r\n\r\n.user-panel>.info>p {\r\n    font-weight: 600;\r\n    margin-bottom: 9px;\r\n}\r\n\r\n.user-panel {\r\n    clear: left;\r\n    display: block;\r\n    float: left;\r\n    width: 100%;\r\n    margin-bottom: 15px;\r\n    padding: 25px 15px;\r\n    border-bottom: 1px solid;\r\n}\r\n\r\n.user-panel>.info {\r\n    padding: 5px 5px 5px 15px;\r\n    line-height: 1;\r\n    position: absolute;\r\n    left: 55px;\r\n}\r\n\r\n.fliph .user-panel{ \r\n    display: none; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2lkZWJhci9zaWRlYmFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7SUFDckIseUNBQWlDO0lBQWpDLGlDQUFpQztJQUNqQyw0QkFBNEI7QUFDaEM7O0FBRUE7SUFDSTtRQUNJLDRCQUE0QjtJQUNoQztBQUNKOztBQUVBO0lBQ0k7UUFDSSw0QkFBNEI7SUFDaEM7QUFDSjs7QUFFQTtJQUNJLHFCQUFxQjtBQUN6Qjs7QUFDQTtJQUNJLGVBQWUsRUFBRSxVQUFVLEVBQUUsV0FBVztBQUM1Qzs7QUFDQTtJQUNJLGFBQWEsRUFBRSxnQkFBZ0I7SUFDL0IsVUFBVSxDQUFDLDZCQUE2QjtJQUN4QztBQUNKOztBQUNBO0lBQ0kscUJBQXFCO0lBQ3JCLDZCQUE2QjtJQUM3Qix5Q0FBZ0M7SUFBaEM7QUFDSjs7QUFDQTtJQUNJLGdDQUFnQztBQUNwQzs7QUFDQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFDQTtJQUNJO0FBQ0o7O0FBQ0E7SUFDSSxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixNQUFNO0lBQ04sVUFBVTtJQUNWLHNCQUFzQjtJQUN0QixZQUFZO0FBQ2hCOztBQUNBO0lBQ0kscUJBQXFCO0lBQ3JCLGlCQUFpQjtJQUNqQix5Q0FBZ0M7SUFBaEM7QUFDSjs7QUFDQTtJQUNJLDZCQUE2QjtBQUNqQzs7QUFDQTtJQUNJLHlDQUFnQztJQUFoQztBQUNKOztBQUNBO0lBQ0ksWUFBWSxDQUFDLHlDQUFnQyxDQUFoQztBQUNqQjs7QUFDQTtJQUNJLFdBQVcsQ0FBQyx5Q0FBaUMsQ0FBakMsaUNBQWlDOztBQUVqRDs7QUFDQTtJQUNJO0FBQ0o7O0FBQ0E7SUFDSSxrQkFBa0I7SUFDbEIsVUFBVTtJQUNWLE1BQU07SUFDTixzQkFBc0I7SUFDdEIsWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsY0FBYztJQUNkLFdBQVc7QUFDZjs7QUFDQTtJQUNJLFdBQVc7SUFDWCxlQUFlO0lBQ2YsWUFBWTtBQUNoQjs7QUFDQTtJQUNJLFdBQVc7QUFDZjs7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixrQkFBa0I7QUFDdEI7O0FBQ0E7SUFDSSxXQUFXO0lBQ1gsY0FBYztJQUNkLFdBQVc7SUFDWCxXQUFXO0lBQ1gsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQix3QkFBd0I7QUFDNUI7O0FBQ0E7SUFDSSx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxhQUFhO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2lkZWJhci9zaWRlYmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2lkZWJhcnsgXHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiMwMDA7XHJcbiAgICB0cmFuc2l0aW9uOiBhbGwgMC41cyAgZWFzZS1pbi1vdXQ7XHJcbiAgICBtaW4taGVpZ2h0OiA1ODBweCAhaW1wb3J0YW50OyBcclxufVxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogOTkycHgpIHtcclxuICAgIC5zaWRlYmFyIHtcclxuICAgICAgICBtaW4taGVpZ2h0OiA1ODBweCAhaW1wb3J0YW50O1xyXG4gICAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1heC13aWR0aDogNTg2KSB7XHJcbiAgICAuc2lkZWJhciB7XHJcbiAgICAgICAgbWluLWhlaWdodDogMzAwcHggIWltcG9ydGFudDtcclxuICAgIH1cclxufVxyXG5cclxuLmJnLXNpZGViYXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiMyMjI7XHJcbn1cclxuLnNpZGViYXIgdWx7IFxyXG4gICAgbGlzdC1zdHlsZTpub25lOyBtYXJnaW46MHB4OyBwYWRkaW5nOjBweDsgXHJcbn1cclxuLnNpZGViYXIgbGkgYSwuc2lkZWJhciBsaSBhLmNvbGxhcHNlZC5hY3RpdmV7IFxyXG4gICAgZGlzcGxheTpibG9jazsgcGFkZGluZzo4cHggMTJweDsgXHJcbiAgICBjb2xvcjojZmZmO2JvcmRlci1sZWZ0OjBweCBzb2xpZCAjZGVkZWRlOyAgXHJcbiAgICB0ZXh0LWRlY29yYXRpb246bm9uZVxyXG59XHJcbi5zaWRlYmFyIGxpIGEuYWN0aXZle1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjojMDAwO1xyXG4gICAgYm9yZGVyLWxlZnQ6NXB4IHNvbGlkICNkZWRlZGU7IFxyXG4gICAgdHJhbnNpdGlvbjogYWxsIDAuNXMgIGVhc2UtaW4tb3V0XHJcbn1cclxuLnNpZGViYXIgbGkgYTpob3ZlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IzAwMCAhaW1wb3J0YW50O1xyXG59XHJcbi5zaWRlYmFyIGxpIGEgaXsgXHJcbiAgICBwYWRkaW5nLXJpZ2h0OjVweDtcclxufVxyXG4uc2lkZWJhciB1bCBsaSAuc3ViLW1lbnUgbGkgYXsgXHJcbiAgICBwb3NpdGlvbjpyZWxhdGl2ZVxyXG59XHJcbi5zaWRlYmFyIHVsIGxpIC5zdWItbWVudSBsaSBhOmhvdmVyOmFmdGVyIHtcclxuICAgIGNvbnRlbnQ6IFwiXCI7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiAtNXB4O1xyXG4gICAgdG9wOiAwO1xyXG4gICAgd2lkdGg6IDVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxMTE7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuLnNpZGViYXIgdWwgbGkgLnN1Yi1tZW51IGxpIGE6aG92ZXJ7IFxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjojMjIyOyBcclxuICAgIHBhZGRpbmctbGVmdDoyMHB4OyBcclxuICAgIHRyYW5zaXRpb246IGFsbCAwLjVzICBlYXNlLWluLW91dFxyXG59XHJcbi5zdWItbWVudXsgXHJcbiAgICBib3JkZXItbGVmdDo1cHggc29saWQgI2RlZGVkZTtcclxufVxyXG4uc2lkZWJhciBsaSBhIC5uYXYtbGFiZWwsLnNpZGViYXIgbGkgYSAubmF2LWxhYmVsK3NwYW57IFxyXG4gICAgdHJhbnNpdGlvbjogYWxsIDAuNXMgIGVhc2UtaW4tb3V0XHJcbn1cclxuLnNpZGViYXIuZmxpcGggbGkgYSAubmF2LWxhYmVsLC5zaWRlYmFyLmZsaXBoIGxpIGEgLm5hdi1sYWJlbCtzcGFueyBcclxuICAgIGRpc3BsYXk6bm9uZTt0cmFuc2l0aW9uOiBhbGwgMC41cyAgZWFzZS1pbi1vdXRcclxufVxyXG4uc2lkZWJhci5mbGlwaCB7XHJcbiAgICB3aWR0aDogNDJweDt0cmFuc2l0aW9uOiBhbGwgMC41cyAgZWFzZS1pbi1vdXQ7XHJcbiAgIFxyXG59XHJcbi5zaWRlYmFyLmZsaXBoIGxpeyBcclxuICAgIHBvc2l0aW9uOnJlbGF0aXZlXHJcbn1cclxuLnNpZGViYXIuZmxpcGggLnN1Yi1tZW51IHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGxlZnQ6IDM5cHg7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjIyO1xyXG4gICAgd2lkdGg6IDE1MHB4O1xyXG4gICAgei1pbmRleDogMTAwO1xyXG59XHJcblxyXG4udXNlci1wYW5lbCB7XHJcbiAgICBjbGVhcjogbGVmdDtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbn1cclxuLnVzZXItcGFuZWw+LmltYWdlPmltZyB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIG1heC13aWR0aDogNDVweDtcclxuICAgIGhlaWdodDogYXV0bztcclxufVxyXG4udXNlci1wYW5lbD4uaW5mbywgIC51c2VyLXBhbmVsPi5pbmZvPmEge1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbn1cclxuLnVzZXItcGFuZWw+LmluZm8+cCB7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogOXB4O1xyXG59XHJcbi51c2VyLXBhbmVsIHtcclxuICAgIGNsZWFyOiBsZWZ0O1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTVweDtcclxuICAgIHBhZGRpbmc6IDI1cHggMTVweDtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZDtcclxufVxyXG4udXNlci1wYW5lbD4uaW5mbyB7XHJcbiAgICBwYWRkaW5nOiA1cHggNXB4IDVweCAxNXB4O1xyXG4gICAgbGluZS1oZWlnaHQ6IDE7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiA1NXB4O1xyXG59XHJcblxyXG4uZmxpcGggLnVzZXItcGFuZWx7IFxyXG4gICAgZGlzcGxheTogbm9uZTsgXHJcbn0iXX0= */";
     /***/
   },
 
@@ -2268,7 +2268,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".sidebar-side {\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n.page-header {\r\n    padding-top: 15px;\r\n    padding-bottom: 12px;\r\n}\r\n\r\n.btn-purple {\r\n    background-color: #963694;\r\n    border: 0;\r\n    padding: 10px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.todos button:hover,.todos button:active,.todos button:focus {\r\n    background: #842381;\r\n  }\r\n\r\n.view-modal tbody tr:hover{\r\n    border-top: 1px solid #eee;\r\n    border-bottom: 1px solid #eee;\r\n}\r\n\r\n.modal-title input[type=text], .view-modal input[type=text] {\r\n    width:250px;\r\n    border: transparent;\r\n}\r\n\r\n.modal-title input:focus, .view-modal input:focus {\r\n    border: transparent;\r\n    outline: none;\r\n}\r\n\r\ntr.child {\r\n    border-spacing: 12px;\r\n}\r\n\r\n.todo-box {\r\n    box-shadow: 2px 2px 2px 2px #ccc;\r\n}\r\n\r\n.todo-box .card-header {\r\n    padding: 0.5rem 1rem !important;\r\n    font-size: 1rem;\r\n    font-weight: 500;\r\n}\r\n\r\n.todo-box .card-footer {\r\n    padding: 0.3rem 1rem !important;\r\n}\r\n\r\n.todo-box .card-footer i {\r\n    padding: 0.2rem 0.5rem;\r\n}\r\n\r\n.todo-box .list-group-item {\r\n    padding: 0.2rem 1rem !important;\r\n    font-size: 0.8rem;\r\n    border: none;\r\n}\r\n\r\n.todo-box input[type=\"checkbox\"] {\r\n    margin-right: 6px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdG9kby9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxpQkFBaUI7SUFDakIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksaUJBQWlCO0lBQ2pCLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixTQUFTO0lBQ1QsYUFBYTtJQUNiLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxtQkFBbUI7RUFDckI7O0FBRUY7SUFDSSwwQkFBMEI7SUFDMUIsNkJBQTZCO0FBQ2pDOztBQUVBO0lBQ0ksV0FBVztJQUNYLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUdBO0lBQ0ksZ0NBQWdDO0FBQ3BDOztBQUVBO0lBQ0ksK0JBQStCO0lBQy9CLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSwrQkFBK0I7QUFDbkM7O0FBQ0E7SUFDSSxzQkFBc0I7QUFDMUI7O0FBRUE7SUFDSSwrQkFBK0I7SUFDL0IsaUJBQWlCO0lBQ2pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC90b2RvL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaWRlYmFyLXNpZGUge1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAwcHg7XHJcbn1cclxuXHJcbi5wYWdlLWhlYWRlciB7XHJcbiAgICBwYWRkaW5nLXRvcDogMTVweDtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMnB4O1xyXG59XHJcblxyXG4uYnRuLXB1cnBsZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOTYzNjk0O1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGNvbG9yOiAjRkZGRkZGO1xyXG59XHJcblxyXG4udG9kb3MgYnV0dG9uOmhvdmVyLC50b2RvcyBidXR0b246YWN0aXZlLC50b2RvcyBidXR0b246Zm9jdXMge1xyXG4gICAgYmFja2dyb3VuZDogIzg0MjM4MTtcclxuICB9XHJcblxyXG4udmlldy1tb2RhbCB0Ym9keSB0cjpob3ZlcntcclxuICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjZWVlO1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNlZWU7XHJcbn1cclxuXHJcbi5tb2RhbC10aXRsZSBpbnB1dFt0eXBlPXRleHRdLCAudmlldy1tb2RhbCBpbnB1dFt0eXBlPXRleHRdIHtcclxuICAgIHdpZHRoOjI1MHB4O1xyXG4gICAgYm9yZGVyOiB0cmFuc3BhcmVudDtcclxufVxyXG5cclxuLm1vZGFsLXRpdGxlIGlucHV0OmZvY3VzLCAudmlldy1tb2RhbCBpbnB1dDpmb2N1cyB7XHJcbiAgICBib3JkZXI6IHRyYW5zcGFyZW50O1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxudHIuY2hpbGQge1xyXG4gICAgYm9yZGVyLXNwYWNpbmc6IDEycHg7XHJcbn1cclxuXHJcblxyXG4udG9kby1ib3gge1xyXG4gICAgYm94LXNoYWRvdzogMnB4IDJweCAycHggMnB4ICNjY2M7XHJcbn1cclxuXHJcbi50b2RvLWJveCAuY2FyZC1oZWFkZXIge1xyXG4gICAgcGFkZGluZzogMC41cmVtIDFyZW0gIWltcG9ydGFudDtcclxuICAgIGZvbnQtc2l6ZTogMXJlbTtcclxuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbn1cclxuXHJcbi50b2RvLWJveCAuY2FyZC1mb290ZXIge1xyXG4gICAgcGFkZGluZzogMC4zcmVtIDFyZW0gIWltcG9ydGFudDtcclxufVxyXG4udG9kby1ib3ggLmNhcmQtZm9vdGVyIGkge1xyXG4gICAgcGFkZGluZzogMC4ycmVtIDAuNXJlbTtcclxufVxyXG5cclxuLnRvZG8tYm94IC5saXN0LWdyb3VwLWl0ZW0ge1xyXG4gICAgcGFkZGluZzogMC4ycmVtIDFyZW0gIWltcG9ydGFudDtcclxuICAgIGZvbnQtc2l6ZTogMC44cmVtO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG59XHJcblxyXG4udG9kby1ib3ggaW5wdXRbdHlwZT1cImNoZWNrYm94XCJdIHtcclxuICAgIG1hcmdpbi1yaWdodDogNnB4O1xyXG59Il19 */";
+    __webpack_exports__["default"] = ".sidebar-side {\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n.page-header {\r\n    padding-top: 15px;\r\n    padding-bottom: 12px;\r\n}\r\n\r\n.btn-purple {\r\n    background-color: #963694;\r\n    border: 0;\r\n    padding: 10px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.todos button:hover,.todos button:active,.todos button:focus {\r\n    background: #842381;\r\n  }\r\n\r\n.view-modal tbody tr:hover{\r\n    border-top: 1px solid #eee;\r\n    border-bottom: 1px solid #eee;\r\n}\r\n\r\n.modal-title input[type=text], .view-modal input[type=text] {\r\n    border: transparent;\r\n}\r\n\r\n.modal-title input:focus, .view-modal input:focus {\r\n    border: transparent;\r\n    outline: none;\r\n}\r\n\r\ntr.child {\r\n    border-spacing: 12px;\r\n}\r\n\r\n.todo-box {\r\n    box-shadow: 2px 2px 2px 2px #ccc;\r\n}\r\n\r\n.todo-box .card-header {\r\n    padding: 0.5rem 1rem !important;\r\n    font-size: 1rem;\r\n    font-weight: 500;\r\n}\r\n\r\n.todo-box .card-footer {\r\n    padding: 0.3rem 1rem !important;\r\n}\r\n\r\n.todo-box .card-footer i {\r\n    padding: 0.2rem 0.5rem;\r\n}\r\n\r\n.todo-box .list-group-item {\r\n    padding: 0.2rem 1rem !important;\r\n    font-size: 0.8rem;\r\n    border: none;\r\n}\r\n\r\n.todo-box input[type=\"checkbox\"] {\r\n    margin-right: 6px;\r\n}\r\n\r\n.top-decorum {\r\n    margin:15px;\r\n}\r\n\r\n.card {\r\n    margin: 6px\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdG9kby9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxpQkFBaUI7SUFDakIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksaUJBQWlCO0lBQ2pCLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixTQUFTO0lBQ1QsYUFBYTtJQUNiLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxtQkFBbUI7RUFDckI7O0FBRUY7SUFDSSwwQkFBMEI7SUFDMUIsNkJBQTZCO0FBQ2pDOztBQUVBO0lBQ0ksbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxvQkFBb0I7QUFDeEI7O0FBR0E7SUFDSSxnQ0FBZ0M7QUFDcEM7O0FBRUE7SUFDSSwrQkFBK0I7SUFDL0IsZUFBZTtJQUNmLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLCtCQUErQjtBQUNuQzs7QUFDQTtJQUNJLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJLCtCQUErQjtJQUMvQixpQkFBaUI7SUFDakIsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC90b2RvL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaWRlYmFyLXNpZGUge1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAwcHg7XHJcbn1cclxuXHJcbi5wYWdlLWhlYWRlciB7XHJcbiAgICBwYWRkaW5nLXRvcDogMTVweDtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMnB4O1xyXG59XHJcblxyXG4uYnRuLXB1cnBsZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOTYzNjk0O1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGNvbG9yOiAjRkZGRkZGO1xyXG59XHJcblxyXG4udG9kb3MgYnV0dG9uOmhvdmVyLC50b2RvcyBidXR0b246YWN0aXZlLC50b2RvcyBidXR0b246Zm9jdXMge1xyXG4gICAgYmFja2dyb3VuZDogIzg0MjM4MTtcclxuICB9XHJcblxyXG4udmlldy1tb2RhbCB0Ym9keSB0cjpob3ZlcntcclxuICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjZWVlO1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNlZWU7XHJcbn1cclxuXHJcbi5tb2RhbC10aXRsZSBpbnB1dFt0eXBlPXRleHRdLCAudmlldy1tb2RhbCBpbnB1dFt0eXBlPXRleHRdIHtcclxuICAgIGJvcmRlcjogdHJhbnNwYXJlbnQ7XHJcbn1cclxuXHJcbi5tb2RhbC10aXRsZSBpbnB1dDpmb2N1cywgLnZpZXctbW9kYWwgaW5wdXQ6Zm9jdXMge1xyXG4gICAgYm9yZGVyOiB0cmFuc3BhcmVudDtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbn1cclxuXHJcbnRyLmNoaWxkIHtcclxuICAgIGJvcmRlci1zcGFjaW5nOiAxMnB4O1xyXG59XHJcblxyXG5cclxuLnRvZG8tYm94IHtcclxuICAgIGJveC1zaGFkb3c6IDJweCAycHggMnB4IDJweCAjY2NjO1xyXG59XHJcblxyXG4udG9kby1ib3ggLmNhcmQtaGVhZGVyIHtcclxuICAgIHBhZGRpbmc6IDAuNXJlbSAxcmVtICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXNpemU6IDFyZW07XHJcbiAgICBmb250LXdlaWdodDogNTAwO1xyXG59XHJcblxyXG4udG9kby1ib3ggLmNhcmQtZm9vdGVyIHtcclxuICAgIHBhZGRpbmc6IDAuM3JlbSAxcmVtICFpbXBvcnRhbnQ7XHJcbn1cclxuLnRvZG8tYm94IC5jYXJkLWZvb3RlciBpIHtcclxuICAgIHBhZGRpbmc6IDAuMnJlbSAwLjVyZW07XHJcbn1cclxuXHJcbi50b2RvLWJveCAubGlzdC1ncm91cC1pdGVtIHtcclxuICAgIHBhZGRpbmc6IDAuMnJlbSAxcmVtICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXNpemU6IDAuOHJlbTtcclxuICAgIGJvcmRlcjogbm9uZTtcclxufVxyXG5cclxuLnRvZG8tYm94IGlucHV0W3R5cGU9XCJjaGVja2JveFwiXSB7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDZweDtcclxufVxyXG5cclxuLnRvcC1kZWNvcnVtIHtcclxuICAgIG1hcmdpbjoxNXB4O1xyXG59XHJcblxyXG4uY2FyZCB7XHJcbiAgICBtYXJnaW46IDZweFxyXG59XHJcbiJdfQ== */";
     /***/
   },
 
@@ -2379,13 +2379,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.fetchUserList = function () {
           _this5.appService.getAllNormalUsers().subscribe(function (apiResponse) {
-            _this5.userList = apiResponse.data;
-            console.log(_this5.userList);
+            _this5.userList = apiResponse.data; // console.log(this.userList);
           });
         };
 
         this.fetchFriendList = function (userId) {
           _this5.appService.getFriendList(userId).subscribe(function (apiResponse) {
+            // console.log(apiResponse);
             _this5.friendList = apiResponse.data;
           });
         };
@@ -2398,15 +2398,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.fetchUserTodoList = function (userId) {
           _this5.appService.getUserTodoList(userId).subscribe(function (apiResponse) {
-            // console.log(apiResponse);
+            //  console.log(apiResponse);
             _this5.todoList = apiResponse.data;
           });
         };
 
         this.fetchLastVersionTodo = function (userId, parentId, version) {
           _this5.appService.getUserTodoLastVersion(userId, parentId, version).subscribe(function (apiResponse) {
-            console.log(apiResponse);
-
+            // console.log(apiResponse);
             if (apiResponse.data !== 0) {
               _this5.todo = apiResponse.data;
             }
@@ -2423,10 +2422,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.getNotification = function () {
           _this5.socketService.onReceivingNotification(_this5.user.userId).subscribe(function (data) {
-            console.log(data);
-
-            if (_this5.user.userId === data.receiverId) {
+            // console.log(data);
+            if (Array.isArray(data.receiverId) && data.receiverId.includes(_this5.user.userId)) {
               _this5.toastr.info("Notification received: \"".concat(data.message, "\""));
+
+              _this5.fetchUserTodoList(_this5.user.userId);
+            } else if (_this5.user.userId === data.receiverId) {
+              _this5.toastr.info("Notification received: \"".concat(data.message, "\""));
+
+              _this5.fetchUserTodoList(_this5.user.userId);
             }
           });
         };
@@ -2445,8 +2449,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.modal.open(this.modalCreate, {
             size: 'md'
-          });
-          console.log(this.todo);
+          }); // console.log(this.todo);
         }
       }, {
         key: "ngOnInit",
@@ -2473,7 +2476,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "updateItem",
-        value: function updateItem(formList) {// console.log(formList);
+        value: function updateItem(formList) {//  console.log(formList);
         }
       }, {
         key: "addItem",
@@ -2485,7 +2488,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (item) {
             if (this.childItem.description != null || this.childItem.description !== '' && this.childItem.isSelected !== false) {
-              // console.log(this.childItem);
+              //  console.log(this.childItem);
               this.todo.list[this.todo.list.indexOf(item)].children = [].concat(_toConsumableArray(this.todo.list[this.todo.list.indexOf(item)].children), [this.childItem]);
               this.childItem = new src_app_shared_models_item__WEBPACK_IMPORTED_MODULE_5__["Item"]();
               this.item = new src_app_shared_models_item__WEBPACK_IMPORTED_MODULE_5__["Item"]();
@@ -2494,7 +2497,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.isChildShow = false;
           } else {
             if (this.item.description != null || this.item.description !== '' && this.item.isSelected !== false) {
-              // console.log(this.item);
+              //  console.log(this.item);
               this.todo.list = [].concat(_toConsumableArray(this.todo.list), [this.item]);
               this.item = new src_app_shared_models_item__WEBPACK_IMPORTED_MODULE_5__["Item"]();
             }
@@ -2505,7 +2508,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteItem",
         value: function deleteItem(item, child) {
-          if (item) {// console.log(this.todo.list.indexOf(item));
+          if (item) {//  console.log(this.todo.list.indexOf(item));
           }
 
           if (child) {
@@ -2517,6 +2520,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onKeyPress",
         value: function onKeyPress(event) {
+          var _this6 = this;
+
           var charCode = String.fromCharCode(event.which).toLowerCase();
 
           if (event.ctrlKey && charCode === 's') {
@@ -2535,16 +2540,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.todo.sharedWith.push(this.user.userId);
               }
 
+              this.friendList.forEach(function (friend) {
+                if (!_this6.todo.sharedWith.includes(friend.userId)) {
+                  _this6.todo.sharedWith.push(friend.userId);
+                }
+              });
+
               if (this.todo1.title !== '' && this.todo.list.length !== 0) {
                 this.createNewVersionTodo(this.todo);
-                this.sendNotification("TODO list has been updated by ".concat(this.user.userId), this.todo.sharedWith.splice(this.todo.sharedWith.indexOf(this.user.userId)));
+                this.fetchUserTodoList(this.user.userId);
+                this.sendNotification("TODO list has been updated by ".concat(this.user.username), this.todo.sharedWith.splice(this.todo.sharedWith.indexOf(this.user.userId)));
               } else {
                 this.createNewTodo(this.todo);
                 this.todoList = [].concat(_toConsumableArray(this.todoList), [this.todo]);
-                this.sendNotification("New TODO list has been created by ".concat(this.user.userId), this.todo.sharedWith.splice(this.todo.sharedWith.indexOf(this.user.userId)));
+                this.sendNotification("New TODO list has been created by ".concat(this.user.username), this.todo.sharedWith.splice(this.todo.sharedWith.indexOf(this.user.userId)));
               }
 
-              this.todo1 = this.todo1 = JSON.parse(JSON.stringify(this.todo)); // console.log(this.todo);
+              this.todo1 = this.todo1 = JSON.parse(JSON.stringify(this.todo)); //  console.log(this.todo);
             }
 
             event.preventDefault();
@@ -2557,53 +2569,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "press",
-        value: function press($event) {
-          console.log($event);
+        value: function press($event) {// console.log($event);
         }
       }, {
         key: "createNewTodo",
         value: function createNewTodo(todo) {
-          var _this6 = this;
-
-          this.appService.createNewTodo(todo).subscribe(function (apiResponse) {
-            if (apiResponse.status === 200) {
-              _this6.todo.todoId = apiResponse.data.todoId;
-              _this6.todo.version = apiResponse.data.version;
-              _this6.todo.status = apiResponse.data.status;
-              _this6.todo.parentId = apiResponse.data.parentId;
-
-              _this6.toastr.success('Todo has been saved successfully');
-            }
-          });
-        }
-      }, {
-        key: "createNewVersionTodo",
-        value: function createNewVersionTodo(todo) {
           var _this7 = this;
 
-          this.appService.createNewVersionTodo(todo).subscribe(function (apiResponse) {
+          this.appService.createNewTodo(todo).subscribe(function (apiResponse) {
             if (apiResponse.status === 200) {
               _this7.todo.todoId = apiResponse.data.todoId;
               _this7.todo.version = apiResponse.data.version;
               _this7.todo.status = apiResponse.data.status;
               _this7.todo.parentId = apiResponse.data.parentId;
 
-              _this7.toastr.success('Todo has been updated successfully');
+              _this7.toastr.success('Todo has been saved successfully');
+            }
+          });
+        }
+      }, {
+        key: "createNewVersionTodo",
+        value: function createNewVersionTodo(todo) {
+          var _this8 = this;
 
-              console.log(apiResponse);
+          this.appService.createNewVersionTodo(todo).subscribe(function (apiResponse) {
+            if (apiResponse.status === 200) {
+              _this8.todo.todoId = apiResponse.data.todoId;
+              _this8.todo.version = apiResponse.data.version;
+              _this8.todo.status = apiResponse.data.status;
+              _this8.todo.parentId = apiResponse.data.parentId;
+
+              _this8.toastr.success('Todo has been updated successfully'); // console.log(apiResponse);
+
             }
           });
         }
       }, {
         key: "removeTodo",
         value: function removeTodo(todo) {
-          var _this8 = this;
+          var _this9 = this;
 
           this.appService.removeTodo(todo).subscribe(function (apiResponse) {
             if (apiResponse.status === 200) {
-              _this8.todoList.splice(_this8.todoList.indexOf(todo), 1);
+              _this9.todoList.splice(_this9.todoList.indexOf(todo), 1);
 
-              _this8.toastr.success('Todo has been removed successfully');
+              _this9.toastr.success('Todo has been removed successfully');
             }
           });
         }
@@ -2611,42 +2621,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "deepCompare",
         value: function deepCompare(currentTodo, prevTodo) {
           if (currentTodo.title !== prevTodo.title) {
-            console.log(1);
+            // console.log(1);
             return true;
           }
 
           if (currentTodo.version !== prevTodo.version) {
-            console.log(2);
+            // console.log(2);
             return true;
           }
 
           if (currentTodo.list.length !== prevTodo.list.length) {
-            console.log(3);
+            // console.log(3);
             return true;
           } else {
             for (var i = 0; i < currentTodo.list.length; i++) {
               if (currentTodo.list[i].isSelected !== prevTodo.list[i].isSelected) {
-                console.log(4);
+                // console.log(4);
                 return true;
               }
 
               if (currentTodo.list[i].description !== prevTodo.list[i].description) {
-                console.log(5);
+                // console.log(5);
                 return true;
               }
 
               if (currentTodo.list[i].children.length !== prevTodo.list[i].children.length) {
-                console.log(6);
+                // console.log(6);
                 return true;
               } else {
                 for (var j = 0; j < currentTodo.list[i].children.length; j++) {
                   if (currentTodo.list[i].children[j].isSelected !== prevTodo.list[i].children[j].isSelected) {
-                    console.log(7);
+                    // console.log(7);
                     return true;
                   }
 
                   if (currentTodo.list[i].children[j].description !== prevTodo.list[i].children[j].description) {
-                    console.log(8);
+                    // console.log(8);
                     return true;
                   }
                 }
@@ -2873,7 +2883,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "resetPasswordLink",
         value: function resetPasswordLink() {
-          var _this9 = this;
+          var _this10 = this;
 
           if (!this.email) {
             this.toastr.warning('Email address is mandatory');
@@ -2884,12 +2894,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             this.appService.forgotPassword(data).subscribe(function (apiResponse) {
               if (apiResponse.status === 200) {
-                _this9.toastr.success(apiResponse.message);
+                _this10.toastr.success(apiResponse.message);
               } else {
-                _this9.toastr.error(apiResponse.message);
+                _this10.toastr.error(apiResponse.message);
               }
             }, function (err) {
-              _this9.toastr.error(err.error.message);
+              _this10.toastr.error(err.error.message);
             });
           }
         }
@@ -3045,7 +3055,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "signInConfirmation",
         value: function signInConfirmation(formData) {
-          var _this10 = this;
+          var _this11 = this;
 
           this.user = new src_app_shared_models_user__WEBPACK_IMPORTED_MODULE_6__["User"](formData);
           this.errMessage = this.user.userLoginValidator();
@@ -3065,24 +3075,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].set('receiverName', apiResponse.data.userDetails.firstName + ' ' + apiResponse.data.userDetails.lastName);
                 ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].set('role', apiResponse.data.userDetails.role);
 
-                _this10.appService.setUserInfoFromLocalStorage(apiResponse.data.userDetails);
+                _this11.appService.setUserInfoFromLocalStorage(apiResponse.data.userDetails);
 
-                _this10.toastr.success('You have successfullly Signed In');
+                _this11.toastr.success('You have successfullly Signed In');
 
                 if (ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].get('role') === '2') {
                   setTimeout(function () {
-                    return _this10.goToDashboard();
+                    return _this11.goToDashboard();
                   }, 1000);
                 } else {
                   setTimeout(function () {
-                    return _this10.goToDashboard(ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].get('receiverId'));
+                    return _this11.goToDashboard(ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_5__["Cookie"].get('receiverId'));
                   }, 1000);
                 }
               } else {
-                _this10.toastr.error(apiResponse.message);
+                _this11.toastr.error(apiResponse.message);
               }
             }, function (err) {
-              _this10.toastr.error(err.error.message);
+              _this11.toastr.error(err.error.message);
             });
           }
         }
@@ -3205,7 +3215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "resetPassword",
         value: function resetPassword() {
-          var _this11 = this;
+          var _this12 = this;
 
           if (!this.password) {
             this.toastr.warning('Password cannot be empty');
@@ -3221,12 +3231,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             this.appService.login(data).subscribe(function (apiResponse) {
               if (apiResponse.status === 200) {
-                _this11.toastr.success(apiResponse.message);
+                _this12.toastr.success(apiResponse.message);
               } else {
-                _this11.toastr.error(apiResponse.message);
+                _this12.toastr.error(apiResponse.message);
               }
             }, function (err) {
-              _this11.toastr.error(err.error.message);
+              _this12.toastr.error(err.error.message);
             });
           }
         }
@@ -3359,7 +3369,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "signUpConfirmation",
         value: function signUpConfirmation(formData) {
-          var _this12 = this;
+          var _this13 = this;
 
           this.user = new src_app_shared_models_user__WEBPACK_IMPORTED_MODULE_5__["User"](formData);
           this.errMessage = this.user.userSignupValidator();
@@ -3370,26 +3380,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.appService.signup(this.user).subscribe(function (apiResponse) {
               // console.log(apiResponse);
               if (apiResponse.status === 200) {
-                _this12.toastr.success('You have successfullly Signed Up');
+                _this13.toastr.success('You have successfullly Signed Up');
 
                 setTimeout(function () {
-                  return _this12.goToSignIn();
+                  return _this13.goToSignIn();
                 }, 1000);
               } else {
-                _this12.toastr.error(apiResponse.message);
+                _this13.toastr.error(apiResponse.message);
               }
             }, function (err) {
-              _this12.toastr.error('Some Error occurred');
+              _this13.toastr.error('Some Error occurred');
             });
           }
         }
       }, {
         key: "getCountryCodes",
         value: function getCountryCodes() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.appService.getCountryCode().subscribe(function (data) {
-            _this13.countryCodeList = data;
+            _this14.countryCodeList = data;
           });
         }
       }, {
